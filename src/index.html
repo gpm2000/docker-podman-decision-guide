@@ -797,24 +797,16 @@ function toggleAnalysis(id) {
 <button class="analysis-toggle" onclick="toggleAnalysis('analysis-win-engine')">In-Depth Analysis</button>
 <div class="collapsible" id="analysis-win-engine" style="display: none;">
   <ul>
-    <li>
-      <strong>Architecture & Security:</strong> Docker Engine uses a central daemon (<code>dockerd</code>) that manages all containers, which can be a single point of failure and typically runs with elevated privileges. Podman Engine is daemonless and rootless by default, reducing the attack surface and improving security, especially in multi-user or compliance-focused environments. On Windows, both engines require WSL2 for Linux containers, but Podman’s rootless model is more naturally aligned with security best practices.
-    </li>
-    <li>
-      <strong>Pod & Kubernetes Support:</strong> Podman Engine natively supports pods (groups of containers sharing resources), making it easier to model Kubernetes workloads locally. Docker Engine does not have native pod support; multi-container setups require Compose or Kubernetes.
-    </li>
-    <li>
-      <strong>Resource Usage:</strong> Podman’s daemonless design means lower idle resource consumption and less background overhead. Docker Engine’s daemon can consume more memory and CPU, especially on resource-constrained Windows systems.
-    </li>
-    <li>
-      <strong>Licensing:</strong> Docker Engine itself is free and open source, but Docker Desktop (the GUI) is paid for business use. Podman Engine and Podman Desktop are both free and open source, with no licensing restrictions.
-    </li>
-    <li>
-      <strong>Windows Containers:</strong> Docker Engine supports both Linux and Windows containers natively. Podman Engine on Windows (via WSL2) supports only Linux containers; it does not run native Windows containers.
-    </li>
-    <li>
-      <strong>CLI & Ecosystem:</strong> Podman’s CLI is Docker-compatible, so most Docker commands and scripts work with Podman. However, some advanced Docker features or integrations may require adaptation.
-    </li>
+    <li><strong>Architecture & Security:</strong> Docker Engine uses a central daemon (<code>dockerd</code>) that manages all containers, which can be a single point of failure and typically runs with elevated privileges. Podman Engine is daemonless and rootless by default, reducing the attack surface and improving security, especially in multi-user or compliance-focused environments. On Windows, both engines require WSL2 for Linux containers, but Podman’s rootless model is more naturally aligned with security best practices.</li>
+    <li><strong>Pod & Kubernetes Support:</strong> Podman Engine natively supports pods (groups of containers sharing resources), making it easier to model Kubernetes workloads locally. Docker Engine does not have native pod support; multi-container setups require Compose or Kubernetes.</li>
+    <li><strong>Resource Usage:</strong> Podman’s daemonless design means lower idle resource consumption and less background overhead. Docker Engine’s daemon can consume more memory and CPU, especially on resource-constrained Windows systems.</li>
+    <li><strong>Licensing:</strong> Docker Engine itself is free and open source, but Docker Desktop (the GUI) is paid for business use. Podman Engine and Podman Desktop are both free and open source, with no licensing restrictions.</li>
+    <li><strong>Windows Containers:</strong> Docker Engine supports both Linux and Windows containers natively. Podman Engine on Windows (via WSL2) supports only Linux containers; it does not run native Windows containers.</li>
+    <li><strong>CLI & Ecosystem:</strong> Podman’s CLI is Docker-compatible, so most Docker commands and scripts work with Podman. However, some advanced Docker features or integrations may require adaptation.</li>
+    <li><strong>Native Windows Containers:</strong> Native Windows containers are designed to run Windows-based applications using the Windows kernel.<br>
+           They support workloads like .NET Framework, IIS, and Windows services inside containers.<br>
+           Docker Engine is currently the only mainstream container engine that supports native Windows containers.<br>
+           Podman Engine on Windows, which operates through WSL2, supports only Linux containers and cannot run native Windows containers.</li>
   </ul>
 </div>
 <h3>📝 Takeaway</h3>
