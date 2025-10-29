@@ -29,8 +29,9 @@
 
         .slide {
             display: none;
-            padding: 5px;
-            height: 160vh;
+            /* use full viewport height so title-slide can center correctly */
+            padding: 40px;
+            height: 100vh;
             background: white;
             margin: 15px;
             border-radius: 20px;
@@ -228,6 +229,24 @@
             color: #7c8c9b;
             max-width: 800px;
             font-weight: 500;
+            text-align: center;
+            margin: 8px auto; /* center the subtitle block horizontally */
+        }
+
+        /* small guide button shown on the title slide */
+        .guide-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 10px;
+            background: linear-gradient(135deg, #3498db, #1f78b4);
+            color: white;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(52,152,219,0.2);
+        }
+        .guide-link:hover {
+            transform: translateY(-2px);
         }
 
         .decision-matrix {
@@ -383,18 +402,17 @@ function toggleAnalysis(id) {
 </script></head>
 <body>
 <div class="presentation-container">
-<div class="slide-counter">
-<span id="currentSlide">1</span> / <span id="totalSlides">8</span>
-</div>
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">8</span>
+    </div>
 <!-- Slide 1: Title -->
 <div class="slide active title-slide">
-<h1>Podman vs Docker</h1>
-<div class="subtitle">
-                Enterprise Decision Guide for Container Runtime Selection
-            </div>
-<div class="subtitle" style="font-size: 1.2em; ">
-                Choosing the Right Container Technology for Your Enterprise
-            </div>
+    <h1>Podman vs Docker</h1>
+    <div class="subtitle">Enterprise Decision Guide for Container Runtime Selection</div>
+    <div class="subtitle" style="font-size: 1.2em; ">Choosing the Right Container Technology for Your Enterprise</div>
+    <div style="margin-top:10px;">
+        <a class="guide-link" href="podman_docker_compare_guide.html">Open Comparison Guide</a>
+    </div>
 </div>
 <!-- Slide 2: Architecture Overview -->
 <div class="slide">
