@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset="utf-8" />
+                <title>Podman &amp; Docker Comparison Table</title>
+                <style>
+                        body {
+                                font-family: Arial, sans-serif;
+                                margin: 40px;
+                                background: #f8f9fa;
+                        }
+
+                        h1 {
+                                color: #2c3e50;
+                        }
+
+                        h2 {
+                                color: #34495e;
+                                margin-top: 40px;
+                        }
+
+                        h3 {
+                                color: #2d6a4f;
+                                margin-top: 30px;
+                        }
+
+                        table {
+                                border-collapse: collapse;
+                                width: 100%;
+                                background: #fff;
+                                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+                        }
+
+                        th,
+                        td {
+                                border: 1px solid #ccc;
+                                padding: 8px;
+                                text-align: left;
+                        }
+
+                        th {
+                                background-color: #e9ecef;
+                                font-weight: bold;
+                        }
+
+                        tr:nth-child(even) {
+                                background-color: #f4f6f8;
+                        }
+
+                        tr:hover {
+                                background-color: #e2e6ea;
+                        }
+
+                        ul {
+                                margin-top: 20px;
+                        }
+
+                        li {
+                                margin-bottom: 8px;
+                        }
+
+                        .highlight {
+                                background: #ffe066;
+                                font-weight: bold;
+                        }
+
+                        .license {
+                                background: #d0ebff;
+                                font-weight: bold;
+                        }
+
+                        .decision-flow {
+                                background: #e9ecef;
+                                padding: 20px;
+                                border-radius: 8px;
+                                margin: 30px 0;
+                        }
+
+                        .scenario {
+                                margin-bottom: 18px;
+                        }
+
+                        /* Small button styled to look like table cell text */
+                        .table-button {
+                                background: transparent;
+                                border: none;
+                                padding: 0;
+                                margin: 0;
+                                font: inherit;
+                                color: inherit;
+                                cursor: pointer;
+                                text-decoration: underline;
+                        }
+
+                        /* Back button to return to the main presentation */
+                        .back-btn {
+                                display: inline-block;
+                                padding: 8px 12px;
+                                background: #3498db;
+                                color: #fff;
+                                border-radius: 8px;
+                                text-decoration: none;
+                                font-weight: 600;
+                                box-shadow: 0 6px 14px rgba(52,152,219,0.15);
+                        }
+                        .back-btn:hover {
+                                transform: translateY(-1px);
+                        }
+                </style>
+        </head>
+        <body>
+                <h1>Podman &amp; Docker Decision Guide</h1>
+
+                <!-- Back link to the main presentation -->
+                <p><a class="back-btn" href="index.html">← Back to Presentation</a></p>
+
+                <p>
+                        <strong>Decision Guide:</strong> For organizations with Windows-based
+                        production environments, this guide helps you decide whether to migrate
+                        to Linux OS for containers, or keep Windows and use Docker/Podman
+                        options.
+                </p>
+
+                <h2>Most Relevant Aspects</h2>
+
+                <table>
+                        <thead>
+                                <tr>
+                                        <th>Aspect / Scenario</th>
+                                        <th>Podman Desktop</th>
+                                        <th>Docker Desktop</th>
+                                        <th>Podman in Ubuntu (WSL)</th>
+                                        <th>Docker Engine on Windows (WSL)</th>
+                                        <th>Podman on Linux OS</th>
+                                        <th>Docker Engine on Linux OS</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                                <tr class="license">
+                                        <td>License &amp; Cost</td>
+                                        <td>✅ Free &amp; Open Source (Apache 2.0)</td>
+                                        <td>
+                                                ❌ Free for personal use,
+                                                <b>paid license required for commercial/business use</b>
+                                        </td>
+                                        <td>✅ Free &amp; Open Source (Apache 2.0)</td>
+                                        <td>✅ Free &amp; Open Source (Apache 2.0)</td>
+                                        <td>✅ Free &amp; Open Source (Apache 2.0)</td>
+                                        <td>✅ Free &amp; Open Source (Apache 2.0)</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Supported OS/Container Types</td>
+                                        <td>Linux containers only (via WSL VM)</td>
+                                        <td>Linux containers (via WSL VM), Windows containers (native)</td>
+                                        <td>Linux containers only (via WSL)</td>
+                                        <td>Linux &amp; Windows containers</td>
+                                        <td>Linux containers only</td>
+                                        <td>Linux containers only</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Typical Use Cases</td>
+                                        <td>GUI workflows, team environments</td>
+                                        <td>GUI workflows, team environments, Windows-only workloads</td>
+                                        <td>Dev/test, scripting, rootless dev</td>
+                                        <td>Production, orchestration, Windows containers</td>
+                                        <td>Production, automation, systemd, scaling</td>
+                                        <td>Production, orchestration, scaling</td>
+                                </tr>
+
+                                <tr>
+                                        <td>GUI Availability</td>
+                                        <td>✅ Full GUI via Podman Desktop</td>
+                                        <td>✅ Full GUI via Docker Desktop</td>
+                                        <td>❌ None</td>
+                                        <td>✅ Full GUI via Docker Desktop</td>
+                                        <td>❌ None</td>
+                                        <td>❌ None</td>
+                                </tr>
+
+                                <tr class="highlight">
+                                        <td>Production Suitability</td>
+                                        <td>❌ Not recommended</td>
+                                        <td>❌ Not recommended</td>
+                                        <td>❌ Not recommended</td>
+                                        <td>✅ Recommended</td>
+                                        <td>✅ Recommended</td>
+                                        <td>✅ Recommended</td>
+                                </tr>
+
+                                <tr class="highlight">
+                                        <td>Best for Production</td>
+                                        <td>⚠️ Use Podman on Linux host/VM/K8s</td>
+                                        <td>⚠️ Use Docker Engine on Linux/Windows/K8s</td>
+                                        <td>⚠️ Use Podman on Linux host/VM/K8s</td>
+                                        <td>✅ Use Docker Engine on Windows/K8s</td>
+                                        <td>✅ Use Podman on Linux host/VM/K8s</td>
+                                        <td>✅ Use Docker Engine on Linux/K8s</td>
+                                </tr>
+                        </tbody>
+                </table>
+
+                <h2>Detailed Technical Comparison Table</h2>
+
+                <table>
+                        <thead>
+                                <tr>
+                                        <th>Aspect / Scenario</th>
+                                        <th>Podman Desktop</th>
+                                        <th>Docker Desktop</th>
+                                        <th>Podman in Ubuntu (WSL)</th>
+                                        <th>Docker Engine on Windows (WSL)</th>
+                                        <th>Podman on Linux OS</th>
+                                        <th>Docker Engine on Linux OS</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                        <td>Startup time</td>
+                                        <td>❌ Slower, needs to start VM</td>
+                                        <td>❌ Slower, needs to start VM</td>
+                                        <td>✅ Fast, no VM to start</td>
+                                        <td>❌ Slower, needs to start VM/daemon</td>
+                                        <td>✅ Fast, native</td>
+                                        <td>✅ Fast, native</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Resource usage</td>
+                                        <td>❌ Higher, dedicated VM resources</td>
+                                        <td>❌ Higher, dedicated VM resources</td>
+                                        <td>✅ Lower, shares WSL kernel</td>
+                                        <td>❌ Higher, VM/daemon overhead</td>
+                                        <td>✅ Lower, native</td>
+                                        <td>✅ Lower, native</td>
+                                </tr>
+
+                                <tr>
+                                        <td>CPU usage</td>
+                                        <td>❌ Slightly higher (VM overhead)</td>
+                                        <td>❌ Higher (VM overhead)</td>
+                                        <td>✅ Lower, efficient</td>
+                                        <td>❌ Higher (VM/daemon overhead)</td>
+                                        <td>✅ Lower, native</td>
+                                        <td>✅ Lower, native</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Memory usage</td>
+                                        <td>❌ Higher, VM reserves memory</td>
+                                        <td>❌ Higher, VM reserves memory</td>
+                                        <td>✅ Lower, shared</td>
+                                        <td>❌ Higher, VM/daemon reserves memory</td>
+                                        <td>✅ Lower, native</td>
+                                        <td>✅ Lower, native</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Filesystem access</td>
+                                        <td>❌ Isolated VM filesystem</td>
+                                        <td>❌ Isolated VM filesystem</td>
+                                        <td>✅ Direct to WSL</td>
+                                        <td>❌ Isolated VM filesystem</td>
+                                        <td>✅ Direct to Linux FS</td>
+                                        <td>✅ Direct to Linux FS</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Networking</td>
+                                        <td>✅ Via localhost (port forwarding)</td>
+                                        <td>✅ Via localhost (port forwarding)</td>
+                                        <td>✅ Shares WSL network</td>
+                                        <td>✅ Native Windows networking (Windows containers); Linux via VM</td>
+                                        <td>✅ Native Linux networking</td>
+                                        <td>✅ Native Linux networking</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Container launch speed</td>
+                                        <td>❌ Slightly slower (VM context)</td>
+                                        <td>❌ Slightly slower (VM context)</td>
+                                        <td>✅ Slightly faster</td>
+                                        <td>❌ Slower (VM/daemon context)</td>
+                                        <td>✅ Fast, native</td>
+                                        <td>✅ Fast, native</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Image/container storage</td>
+                                        <td>❌ Not shared with WSL</td>
+                                        <td>❌ Not shared with host</td>
+                                        <td>❌ Not shared with VM</td>
+                                        <td>✅ Native, shared</td>
+                                        <td>✅ Native, shared</td>
+                                        <td>✅ Native, shared</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Image format compatibility</td>
+                                        <td>✅ OCI/Docker compatible</td>
+                                        <td>✅ OCI/Docker compatible</td>
+                                        <td>✅ OCI/Docker compatible</td>
+                                        <td>✅ OCI/Docker compatible</td>
+                                        <td>✅ OCI/Docker compatible</td>
+                                        <td>✅ OCI/Docker compatible</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Image visibility</td>
+                                        <td>❌ Only in Podman VM</td>
+                                        <td>❌ Only in Docker VM</td>
+                                        <td>❌ Only in WSL</td>
+                                        <td>✅ Native, shared</td>
+                                        <td>✅ Native, shared</td>
+                                        <td>✅ Native, shared</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Import/export images</td>
+                                        <td>✅ Manual (save/load)</td>
+                                        <td>✅ Manual (save/load)</td>
+                                        <td>✅ Native, shared</td>
+                                        <td>✅ Native, shared</td>
+                                        <td>✅ Native, shared</td>
+                                        <td>✅ Manual (save/load)</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Container compatibility</td>
+                                        <td>✅ Linux containers only</td>
+                                        <td>✅ Linux containers only</td>
+                                        <td>✅ Linux containers only</td>
+                                        <td>✅ Linux &amp; Windows containers</td>
+                                        <td>✅ Linux containers only</td>
+                                        <td>✅ Linux containers only</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Systemd integration</td>
+                                        <td>✅ Full (if VM supports)</td>
+                                        <td>❌ Not supported</td>
+                                        <td>❌ Limited/experimental</td>
+                                        <td>❌ Not supported</td>
+                                        <td>✅ Full, native</td>
+                                        <td>✅ Full, native</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Rootless containers</td>
+                                        <td>✅ Fully supported</td>
+                                        <td>✅ Supported (depends on VM config)</td>
+                                        <td>✅ Fully supported</td>
+                                        <td>❌ Not supported</td>
+                                        <td>✅ Fully supported</td>
+                                        <td>❌ Not supported</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Multiple environments/machines</td>
+                                        <td>✅ GUI-managed per machine</td>
+                                        <td>✅ GUI-managed per VM</td>
+                                        <td>⚠️ Manual via multiple WSL distros</td>
+                                        <td>✅ Multiple hosts/clusters</td>
+                                        <td>✅ Multiple hosts/clusters</td>
+                                        <td>✅ Multiple hosts/clusters</td>
+                                </tr>
+
+                                <!-- Analytical/Strategic rows with icons -->
+                                <tr>
+                                        <td>Daemonless architecture (Podman)</td>
+                                        <td>
+                                                ✅ Daemonless, fork/exec model, direct process management, no
+                                                central daemon
+                                        </td>
+                                        <td>❌ Central daemon (dockerd), client-server model</td>
+                                        <td>✅ Daemonless, fork/exec model, direct process management, no central daemon</td>
+                                        <td>❌ Central daemon (dockerd), client-server model</td>
+                                        <td>✅ Daemonless, fork/exec model, direct process management, no central daemon</td>
+                                        <td>❌ Central daemon (dockerd), client-server model</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Rootless containers</td>
+                                        <td>✅ Native rootless support, enhances security</td>
+                                        <td>⚠️ Rootless available (manual setup, limited on Windows)</td>
+                                        <td>✅ Native rootless support, enhances security</td>
+                                        <td>⚠️ Rootless available (manual setup, limited on Windows)</td>
+                                        <td>✅ Native rootless support, enhances security</td>
+                                        <td>⚠️ Rootless available (manual setup)</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Per-user network namespaces</td>
+                                        <td>✅ Per-user network isolation</td>
+                                        <td>❌ Shared network namespace by default</td>
+                                        <td>✅ Per-user network isolation</td>
+                                        <td>❌ Shared network namespace by default</td>
+                                        <td>✅ Per-user network isolation</td>
+                                        <td>❌ Shared network namespace by default</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Signal handling</td>
+                                        <td>✅ Direct signal handling</td>
+                                        <td>❌ Indirect signal handling via daemon</td>
+                                        <td>✅ Direct signal handling</td>
+                                        <td>❌ Indirect signal handling via daemon</td>
+                                        <td>✅ Direct signal handling</td>
+                                        <td>❌ Indirect signal handling via daemon</td>
+                                </tr>
+
+                                <tr>
+                                        <td>Monitoring &amp; logging</td>
+                                        <td>
+                                                ✅ journalctl, Prometheus metrics, per-user process management,
+                                                ELK integration via Filebeat/Logstash
+                                        </td>
+                                        <td>
+                                                ✅ Centralized daemon logging, stats API, logging drivers, direct ELK
+                                                integration via gelf/fluentd/Filebeat/Logstash
+                                        </td>
+                                        <td>
+                                                ✅ journalctl, Prometheus metrics, per-user process management,
+                                                ELK integration via Filebeat/Logstash
+                                        </td>
+                                        <td>
+                                                ✅ Centralized daemon logging, stats API, logging drivers, direct ELK
+                                                integration via gelf/fluentd/Filebeat/Logstash
+                                        </td>
+                                        <td>
+                                                ✅ journalctl, Prometheus metrics, per-user process management,
+                                                ELK integration via Filebeat/Logstash
+                                        </td>
+                                        <td>
+                                                ✅ Centralized daemon logging, stats API, logging drivers, direct ELK
+                                                integration via gelf/fluentd/Filebeat/Logstash
+                                        </td>
+                                </tr>
+
+                                <tr>
+                                        <td>Security analysis</td>
+                                        <td>✅ Reduced attack surface, compliance advantages, multi-tenant support</td>
+                                        <td>⚠️ Daemon-based attack surface, team familiarity, legacy support</td>
+                                        <td>✅ Reduced attack surface, compliance advantages, multi-tenant support</td>
+                                        <td>⚠️ Daemon-based attack surface, team familiarity, legacy support</td>
+                                        <td>✅ Reduced attack surface, compliance advantages, multi-tenant support</td>
+                                        <td>⚠️ Daemon-based attack surface, team familiarity, legacy support</td>
+                                </tr>
+
+                                <tr>
+                                        <td>
+                                                <button class="table-button" type="button" onclick="location.href='compose_comparison.html'" title="Open Compose comparison" aria-label="Open Compose comparison">Compose Compatibility</button>
+                                        </td>
+                                        <td>⚠️ Limited support via podman-compose</td>
+                                        <td>✅ Full support for Docker Compose</td>
+                                        <td>⚠️ Limited support via podman-compose</td>
+                                        <td>✅ Full support for Docker Compose</td>
+                                        <td>⚠️ Limited support via podman-compose</td>
+                                        <td>✅ Full support for Docker Compose</td>
+                                </tr>
+                        </tbody>
+
+                        <tr>
+                                <td>Kubernetes Integration</td>
+                                <td>✅ Native K8s YAML, pod-native, CNI networking</td>
+                                <td>⚠️ Compose format, requires translation to K8s</td>
+                                <td>✅ Native K8s YAML, pod-native, CNI networking</td>
+                                <td>⚠️ Compose format, requires translation to K8s</td>
+                                <td>✅ Native K8s YAML, pod-native, CNI networking</td>
+                                <td>⚠️ Compose format, requires translation to K8s</td>
+                        </tr>
+
+                        <tr>
+                                <td>Ecosystem maturity</td>
+                                <td>⚠️ Growing ecosystem</td>
+                                <td>✅ Mature ecosystem, broad tool support</td>
+                                <td>⚠️ Growing ecosystem</td>
+                                <td>✅ Mature ecosystem, broad tool support</td>
+                                <td>⚠️ Growing ecosystem</td>
+                                <td>✅ Mature ecosystem, broad tool support</td>
+                        </tr>
+
+                        <tr>
+                                <td>Strategic recommendations</td>
+                                <td colspan="6">
+                                        <ul>
+                                                <li>
+                                                        ✅ Podman: Ideal for compliance-heavy, Kubernetes-first
+                                                        environments, multi-tenant systems, rootless container needs,
+                                                        systemd integration.
+                                                </li>
+                                                <li>
+                                                        ✅ Docker: Preferred for legacy workloads, team familiarity,
+                                                        complex networking, enterprise support, high-throughput
+                                                        workloads.
+                                                </li>
+                                                <li>
+                                                        ⚠️ Hybrid approach: Use Podman for new, security-sensitive
+                                                        workloads and Docker for legacy or ecosystem-dependent
+                                                        applications.
+                                                </li>
+                                                <li>
+                                                        ⚠️ Future trend: Organizations are increasingly adopting Podman
+                                                        for new projects while maintaining Docker for legacy
+                                                        workloads.
+                                                </li>
+                                        </ul>
+                                </td>
+                        </tr>
+                </table>
+
+                <h2>Key Takeaways</h2>
+
+                <ul>
+                        <li>
+                                <strong>Podman in Ubuntu (WSL)</strong> and <strong>Podman Desktop</strong>
+                                are best for development and testing on Windows.
+                        </li>
+                        <li>
+                                <strong>Podman on Linux OS</strong> is fully suitable for production:
+                                native performance, systemd, rootless containers, and orchestration.
+                        </li>
+                        <li>
+                                <strong>Docker Desktop</strong>
+                                <span style="color:#d90429;font-weight:bold;">requires a paid license for commercial/business use</span>
+                                and is ideal for development on Windows/Mac, not recommended for
+                                production.
+                        </li>
+                        <li>
+                                <strong>Docker Engine on Linux</strong> is the standard for production
+                                Linux container workloads.
+                        </li>
+                        <li>
+                                <strong>Docker Engine on Windows (WSL)</strong> is required for native
+                                Windows containers in production.
+                        </li>
+                        <li>
+                                For <strong>production</strong>, use native Linux or Windows hosts, or
+                                orchestrate with Kubernetes/OpenShift.
+                        </li>
+                </ul>
+
+                <div class="decision-flow">
+                        <h3>Decision Flow</h3>
+                        <ul>
+                                <li>
+                                        <strong>Do you need Linux containers in production?</strong>
+                                        <ul>
+                                                <li>
+                                                        If <strong>yes</strong>: Migrate to Linux OS and use Podman or
+                                                        Docker Engine on Linux, or orchestrate with Kubernetes/OpenShift.
+                                                </li>
+                                                <li>
+                                                        If <strong>no</strong> and you need Windows containers: Use Docker
+                                                        Engine on Windows (WSL).
+                                                </li>
+                                                <li>
+                                                        If you only need dev/test: Use Podman Desktop, Docker Desktop
+                                                        (if license allows), or Podman in Ubuntu (WSL).
+                                                </li>
+                                        </ul>
+                                </li>
+                        </ul>
+                </div>
+
+                <div class="section">
+                        <h2>Scenario-Based Guidance &amp; Checklist</h2>
+                        <h3>Scenario-Based Guidance</h3>
+
+                        <div class="scenario">
+                                <strong>Scenario 1:</strong> Your team is comfortable with Linux and
+                                wants maximum performance and orchestration.<br />
+                                <em>Recommendation:</em> Migrate to Linux OS and use Podman or Docker
+                                Engine for production.
+                        </div>
+
+                        <div class="scenario">
+                                <strong>Scenario 2:</strong> You must run Windows-only workloads (e.g.,
+                                .NET Framework, IIS).<br />
+                                <em>Recommendation:</em> Stay on Windows and use Docker Engine for
+                                Windows containers.
+                        </div>
+
+                        <div class="scenario">
+                                <strong>Scenario 3:</strong> You want hybrid or transitional
+                                environments.<br />
+                                <em>Recommendation:</em> Use Docker Desktop (if license allows) or
+                                Podman Desktop for development, but plan for Linux in production.
+                        </div>
+
+                        <h3>Checklist for Decision Makers</h3>
+                        <ul>
+                                <li>
+                                        Assess your current and future container workload requirements
+                                        (Linux vs Windows).
+                                </li>
+                                <li>Evaluate team skills and readiness for Linux migration.</li>
+                                <li>Consider orchestration needs (Kubernetes/OpenShift).</li>
+                                <li>Plan for production scalability, reliability, and support.</li>
+                                <li>Review licensing and cost constraints for Docker Desktop.</li>
+                                <li>Choose the technology that aligns with your long-term strategy.</li>
+                        </ul>
+                </div>
+        </body>
+</html>

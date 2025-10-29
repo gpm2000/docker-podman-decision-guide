@@ -1,0 +1,115 @@
+<html><head><title>Compose Comparison</title>
+<meta charset="utf-8"/>
+<title>Podman &amp; Docker Comparison Table</title>
+<style>
+                        body {
+                                font-family: Arial, sans-serif;
+                                margin: 40px;
+                                background: #f8f9fa;
+                        }
+
+                        h1 {
+                                color: #2c3e50;
+                        }
+
+                        h2 {
+                                color: #34495e;
+                                margin-top: 40px;
+                        }
+
+                        h3 {
+                                color: #2d6a4f;
+                                margin-top: 30px;
+                        }
+
+                        table {
+                                border-collapse: collapse;
+                                width: 100%;
+                                background: #fff;
+                                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+                        }
+
+                        th,
+                        td {
+                                border: 1px solid #ccc;
+                                padding: 8px;
+                                text-align: left;
+                        }
+
+                        th {
+                                background-color: #e9ecef;
+                                font-weight: bold;
+                        }
+
+                        tr:nth-child(even) {
+                                background-color: #f4f6f8;
+                        }
+
+                        tr:hover {
+                                background-color: #e2e6ea;
+                        }
+
+                        ul {
+                                margin-top: 20px;
+                        }
+
+                        li {
+                                margin-bottom: 8px;
+                        }
+
+                        .highlight {
+                                background: #ffe066;
+                                font-weight: bold;
+                        }
+
+                        .license {
+                                background: #d0ebff;
+                                font-weight: bold;
+                        }
+
+                        .decision-flow {
+                                background: #e9ecef;
+                                padding: 20px;
+                                border-radius: 8px;
+                                margin: 30px 0;
+                        }
+
+                        .scenario {
+                                margin-bottom: 18px;
+                        }
+                </style>
+</head><body><h1>Podman-Compose vs Docker-Compose Comparison</h1><p>This guide compares podman-compose and docker-compose, highlighting limitations and compatibility differences for container orchestration using Compose files.</p>
+<h2>Summary Table of Key Limitations</h2>
+<table>
+<tr>
+<th>Feature</th>
+<th>podman-compose</th>
+<th>Docker Compose</th>
+</tr>
+<tr><td>Restart Policies</td><td>⚠️ Limited/Partial</td><td>✅</td></tr>
+<tr><td>Health Checks</td><td>❌ Not Supported</td><td>✅</td></tr>
+<tr><td>Compose v2 Syntax</td><td>⚠️ Partial</td><td>✅</td></tr>
+<tr><td>Networking</td><td>Pod-based, different</td><td>Bridge</td></tr>
+<tr><td>Volumes</td><td>Supported, but differs</td><td>Supported</td></tr>
+<tr><td>Build Support</td><td>⚠️ Limited/Workarounds</td><td>✅</td></tr>
+<tr><td>Systemd Integration</td><td>✅ (manual)</td><td>❌</td></tr>
+<tr><td>Rootless Containers</td><td>✅ Native</td><td>⚠️ Limited</td></tr>
+<tr><td>Swarm/Orchestration</td><td>❌ Not Supported</td><td>✅</td></tr>
+<tr><td>Ecosystem/Plugins</td><td>⚠️ Less mature</td><td>✅ Mature</td></tr>
+</table>
+
+<h2>Detailed Limitations of podman-compose</h2>
+<ul>
+<li><strong>Partial Feature Support:</strong> Only a subset of Docker Compose features are implemented.</li>
+<li><strong>Restart Policies:</strong> Limited or partial support; may not behave as expected.</li>
+<li><strong>Health Checks:</strong> Not supported.</li>
+<li><strong>Compose v2 Syntax:</strong> Only partial support; newer features may not work.</li>
+<li><strong>Networking:</strong> Uses pod-based networking which differs from Docker's bridge mode.</li>
+<li><strong>Volume Handling:</strong> Some Docker volume options may not be available or behave differently.</li>
+<li><strong>Build Support:</strong> Build directives may require workarounds or fail.</li>
+<li><strong>Systemd Integration:</strong> Can generate systemd service files, but requires manual setup.</li>
+<li><strong>Rootless Operation:</strong> Supported natively, but may cause compatibility issues.</li>
+<li><strong>Maturity:</strong> Less mature and community-maintained; not a drop-in replacement.</li>
+<li><strong>Swarm/Orchestration:</strong> Not supported.</li>
+</ul>
+</body></html>
