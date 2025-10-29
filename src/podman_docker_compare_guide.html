@@ -129,8 +129,8 @@
                                         <th>Aspect / Scenario</th>
                                         <th>Podman Desktop</th>
                                         <th>Docker Desktop</th>
-                                        <th>Podman in Ubuntu (WSL)</th>
-                                        <th>Docker Engine on Windows (WSL)</th>
+                                        <th>Podman in WSL2 Ubuntu</th>
+                                        <th>Docker Engine in Windows WSL2 VM</th>
                                         <th>Podman on Linux OS</th>
                                         <th>Docker Engine on Linux OS</th>
                                 </tr>
@@ -184,7 +184,7 @@
                                         <td>❌ Not recommended</td>
                                         <td>❌ Not recommended</td>
                                         <td>❌ Not recommended</td>
-                                        <td>✅ Recommended</td>
+                                        <td>✅ Recommended only for Windows containers, ❌ Not recommended Linux containers</td>
                                         <td>✅ Recommended</td>
                                         <td>✅ Recommended</td>
                                 </tr>
@@ -209,8 +209,8 @@
                                         <th>Aspect / Scenario</th>
                                         <th>Podman Desktop</th>
                                         <th>Docker Desktop</th>
-                                        <th>Podman in Ubuntu (WSL)</th>
-                                        <th>Docker Engine on Windows (WSL)</th>
+                                        <th>Podman in WSL2 Ubuntu</th>
+                                        <th>Docker Engine in Windows WSL2 VM</th>
                                         <th>Podman on Linux OS</th>
                                         <th>Docker Engine on Linux OS</th>
                                 </tr>
@@ -514,7 +514,7 @@
 
                 <ul>
                         <li>
-                                <strong>Podman in Ubuntu (WSL)</strong> and <strong>Podman Desktop</strong>
+                                <strong>Podman in WSL2 Ubuntu</strong> and <strong>Podman Desktop</strong>
                                 are best for development and testing on Windows.
                         </li>
                         <li>
@@ -532,7 +532,7 @@
                                 Linux container workloads.
                         </li>
                         <li>
-                                <strong>Docker Engine on Windows (WSL)</strong> is required for native
+                                <strong>Docker Engine in Windows WSL2 VM</strong> is required for native
                                 Windows containers in production.
                         </li>
                         <li>
@@ -557,7 +557,7 @@
                                                 </li>
                                                 <li>
                                                         If you only need dev/test: Use Podman Desktop, Docker Desktop
-                                                        (if license allows), or Podman in Ubuntu (WSL).
+                                                        (if license allows), or Podman in WSL2 Ubuntu.
                                                 </li>
                                         </ul>
                                 </li>
